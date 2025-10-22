@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>To‑Do List</title>
+  <!-- Using a simpler, basics-only stylesheet (no CSS variables/filters) -->
+  <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="app__header">
+        <div class="brand">
+          <h1>To‑Do List</h1>
+          <button id="theme-toggle" class="btn icon" type="button" aria-label="Toggle theme" aria-pressed="false" title="Toggle theme">
+            <span class="icon-sun" aria-hidden="true">☀️</span>
+          </button>
+        </div>
+        <form id="new-task-form" autocomplete="off" class="new-task">
+          <input
+            id="task-input"
+            class="new-task__input"
+            name="task"
+            type="text"
+            placeholder="What needs to be done?"
+            aria-label="Task description"
+            required
+            maxlength="200"
+          />
+          <button id="add-btn" class="btn primary" type="submit" aria-label="Add task">
+            Add
+          </button>
+        </form>
+      </header>
+
+      <section class="controls" aria-label="Filters and actions">
+        <div class="filters" role="tablist" aria-label="Filter tasks">
+          <button class="chip is-active" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button class="chip" data-filter="active" role="tab" aria-selected="false">Active</button>
+          <button class="chip" data-filter="completed" role="tab" aria-selected="false">Completed</button>
+        </div>
+        <div class="controls__right">
+          <span id="remaining" class="count" aria-live="polite"></span>
+          <button id="clear-completed" class="btn ghost" type="button">Clear completed</button>
+        </div>
+      </section>
+
+      <section class="list" aria-label="To‑Do items">
+        <div id="empty-state" class="empty" hidden>
+          <div class="empty__icon">🗒️</div>
+          <div class="empty__title">No tasks here yet</div>
+          <div class="empty__hint">Add your first task above to get started.</div>
+        </div>
+        <ul id="task-list" class="task-list"></ul>
+      </section>
+
+      <footer class="app__footer">
+        <small>
+          Saved locally. Double‑click a task to edit; press Enter to save or Esc to cancel.
+        </small>
+      </footer>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+  </html>
