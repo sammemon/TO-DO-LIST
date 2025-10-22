@@ -34,7 +34,7 @@
 }
 
 *{ box-sizing:border-box }
-html,body{ height:100% }
+html,body{ height:100%; -webkit-text-size-adjust:100%; -webkit-tap-highlight-color:transparent }
 body{
   margin:0; font:16px/1.55 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
   background: radial-gradient(1200px 800px at 80% -20%, #1e293b 0%, var(--bg) 60%);
@@ -60,17 +60,20 @@ body{
 .btn{ padding:10px 14px; border-radius:10px; border:1px solid transparent; color:#fff; cursor:pointer; transition:.15s ease-in-out; }
 .btn.primary{ background:var(--brand) }
 .btn.primary:hover{ background:var(--brand-600) }
+.btn.primary:active{ background:var(--brand-700) }
 .btn.ghost{ background:transparent; border-color:#374151; color:var(--muted) }
 .btn.ghost:hover{ color:#fff; border-color:#6b7280 }
-.btn.icon{ padding:8px 10px; border-radius:10px; background:transparent; border:1px solid #334155; color:var(--muted); }
+.btn.icon{ padding:8px 10px; border-radius:10px; background:transparent; border:1px solid #334155; color:var(--muted); min-width:36px; min-height:36px; display:flex; align-items:center; justify-content:center }
 .btn.icon:hover{ color:#fff; border-color:#64748b }
+.btn.icon:active{ transform:scale(.95) }
 .btn:focus-visible{ outline:2px solid var(--ring); outline-offset:2px }
 
 .controls{ margin-top:16px; display:flex; gap:12px; align-items:center; justify-content:space-between }
 .filters{ display:flex; gap:0; border:1px solid #273244; border-radius:12px; overflow:hidden; background:#0b1220 }
-.chip{ padding:8px 12px; border:0; border-right:1px solid #273244; background:transparent; color:var(--muted); cursor:pointer; transition:.15s; }
+.chip{ padding:8px 12px; border:0; border-right:1px solid #273244; background:transparent; color:var(--muted); cursor:pointer; transition:.15s; min-height:36px; display:flex; align-items:center; justify-content:center }
 .chip:last-child{ border-right:0 }
 .chip.is-active{ color:#fff; background:linear-gradient(180deg, rgba(37,99,235,.25), transparent); }
+.chip:active{ transform:scale(.98) }
 .chip:focus-visible{ outline:2px solid var(--ring); outline-offset:2px }
 
 .count{ color:var(--muted) }
@@ -112,7 +115,18 @@ input[type="checkbox"]:checked::before{ transform:scale(1) }
 
 @media (max-width: 520px){
   .app{ margin:14px; padding:16px }
+  .app__header h1{ font-size:22px }
+  .brand{ gap:8px }
+  .btn.icon{ padding:6px 8px; min-width:40px; min-height:40px }
+  .new-task{ flex-wrap:wrap }
+  .new-task__input{ min-width:0 }
+  .controls{ flex-direction:column; align-items:stretch; gap:10px }
+  .controls__right{ display:flex; justify-content:space-between; align-items:center }
+  .filters{ justify-content:center }
+  .chip{ flex:1; text-align:center }
   .actions{ gap:4px }
+  .actions .text{ padding:5px 8px; font-size:14px }
+  .badge{ font-size:11px; padding:3px 8px }
 }
 
 /* Empty state */
